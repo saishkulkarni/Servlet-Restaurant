@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import dto.Customer;
+import dto.FoodItem;
 
 public class MyDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
@@ -17,6 +18,12 @@ public class MyDao {
 	public void save(Customer customer) {
 		transaction.begin();
 		manager.persist(customer);
+		transaction.commit();
+	}
+	
+	public void save(FoodItem item) {
+		transaction.begin();
+		manager.persist(item);
 		transaction.commit();
 	}
 
@@ -37,5 +44,10 @@ public class MyDao {
 			return null;
 		else
 			return list.get(0);
+	}
+	
+	public List<FoodItem> fetchAllFoodItem()
+	{
+		return manager.createQuery("select x from FoodItem x").getResultList();
 	}
 }

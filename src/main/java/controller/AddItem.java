@@ -9,19 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.MyDao;
+import dto.FoodItem;
+
 @WebServlet("/additem")
 @MultipartConfig
 public class AddItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name=req.getParameter("name");
-		double price=Double.parseDouble(req.getParameter("price"));
-		int quantity=Integer.parseInt(req.getParameter("quantity"));
-		String type=req.getParameter("type");
-		
-		byte[] picture=new byte[req.getPart("pic").getInputStream().available()];
+		String name = req.getParameter("name");
+		double price = Double.parseDouble(req.getParameter("price"));
+		int quantity = Integer.parseInt(req.getParameter("quantity"));
+		String type = req.getParameter("type");
+
+		byte[] picture = new byte[req.getPart("pic").getInputStream().available()];
 		req.getPart("pic").getInputStream().read(picture);
-		
-		
+
+		FoodItem item = new FoodItem();
+		item.setName(name);
+		item.setPicture(picture);
+		item.setPrice(price);
+		item.setQuantity(quantity);
+		item.setType(type);
+
+		MyDao dao = new MyDao();
+		dao.save(item);
+
+		resp.getWriter().print("<h1 style='color:green'>Item Added Successfully</h1>");
+		req.getRequestDispatcher("AdminHome.html").include(req, resp);
+
 	}
 }
