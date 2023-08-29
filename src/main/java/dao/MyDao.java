@@ -50,4 +50,16 @@ public class MyDao {
 	{
 		return manager.createQuery("select x from FoodItem x").getResultList();
 	}
+	
+	public FoodItem find(int id)
+	{
+		return manager.find(FoodItem.class, id);
+	}
+	
+	public void delete(FoodItem item)
+	{
+		transaction.begin();
+		manager.remove(item);
+		transaction.commit();
+	}
 }

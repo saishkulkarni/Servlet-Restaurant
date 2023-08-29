@@ -36,11 +36,11 @@ public class AdminViewMenu extends HttpServlet {
 		
 		if(items.isEmpty()) {
 			resp.getWriter().print("<h1 style='color:red'>No Items Found</h1>");
-			req.getRequestDispatcher("AdminHome.html").forward(req, resp);
+			req.getRequestDispatcher("AdminHome.html").include(req, resp);
 		}
 		else {
 		req.setAttribute("list", items);
-		req.getRequestDispatcher("ViewMenu.jsp").forward(req, resp);
+		req.getRequestDispatcher("ViewMenu.jsp").include(req, resp);
 		}
 	}
 }
