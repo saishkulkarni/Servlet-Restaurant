@@ -62,4 +62,10 @@ public class MyDao {
 		manager.remove(item);
 		transaction.commit();
 	}
+
+	public void update(FoodItem item) {
+		transaction.begin();
+		manager.merge(item);
+		transaction.commit();
+	}
 }

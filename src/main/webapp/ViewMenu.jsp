@@ -37,7 +37,7 @@
 			<th><%=item.getType()%></th>
 			<th><%=item.getPrice()%></th>
 			<th><%=item.getQuantity()%></th>
-			<th><a href="edit"><button>Edit</button></a></th>
+			<th><a href="edit?id=<%=item.getId()%>"><button>Edit</button></a></th>
 			<th><a href="delete?id=<%=item.getId()%>"><button>Delete</button></a></th>
 		</tr>
 		<%} %>
