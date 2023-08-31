@@ -18,35 +18,31 @@ import dto.FoodItem;
 public class UpdateItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id=Integer.parseInt(req.getParameter("id"));
+		int id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
 		double price = Double.parseDouble(req.getParameter("price"));
 		int quantity = Integer.parseInt(req.getParameter("quantity"));
 		String type = req.getParameter("type");
 		Part part = req.getPart("pic");
-		byte[] picture=null;
-		MyDao dao=new MyDao();
-		FoodItem item1=dao.find(id);
-		if(part==null)
-		{
-			picture=item1.getPicture();
-		}
-		else {
-		picture = new byte[part.getInputStream().available()];
+		byte[] picture = new byte[part.getInputStream().available()];
 		part.getInputStream().read(picture);
-		}
-		
+
+		MyDao dao = new MyDao();
+
 		FoodItem item = new FoodItem();
 		item.setId(id);
 		item.setName(name);
-		item.setPicture(picture);
+		if (picture.length == 0) {
+			item.setPicture(dao.find(id).getPicture());
+		} else {
+			item.setPicture(picture);
+		}
 		item.setPrice(price);
 		item.setQuantity(quantity);
 		item.setType(type);
-		
 		dao.update(item);
 		resp.getWriter().print("<h1 style='color:green'>Data Updated Successfully</h1>");
 		req.getRequestDispatcher("viewmenu").include(req, resp);
-		
+
 	}
 }
