@@ -39,6 +39,10 @@ public class Login extends HttpServlet {
 			} else {
 				if (password.equals(customer.getPassword())) {
 					resp.getWriter().print("<h1 style='color:green'>Login Success</h1>");
+					
+					// Getting Session and setting value
+					req.getSession().setAttribute("customer", customer);
+					
 					// This is Logic to send to next page
 					req.getRequestDispatcher("CustomerHome.html").include(req, resp);
 				} else {
