@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.MyDao;
 import dto.Customer;
@@ -24,6 +25,10 @@ public class Login extends HttpServlet {
 		MyDao dao = new MyDao();
 		if (email.equals("admin@jsp.com") && password.equals("admin")) {
 			resp.getWriter().print("<h1 style='color:green'>Login Success</h1>");
+
+			// Getting Session and setting value
+			req.getSession().setAttribute("admin", "admin");
+			
 			// This is Logic to send to next page
 			req.getRequestDispatcher("AdminHome.html").include(req, resp);
 		} else {

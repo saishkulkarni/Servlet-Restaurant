@@ -33,7 +33,7 @@
 	<button>Update</button>
 	<button type="reset">Cancel</button>
 </form>
-
-
+<br>
+<a href="viewmenu"><button>Back</button></a>
 </body>
 </html>

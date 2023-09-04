@@ -16,6 +16,15 @@ import dto.Customer;
 public class AdminViewCustomer extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		//Session verification
+		if(req.getSession().getAttribute("admin")==null)
+		{
+			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			req.getRequestDispatcher("Login.html").include(req, resp);
+		}
+		else {
+		
 		// Logic to fetch Data from Database
 		MyDao dao = new MyDao();
 		List<Customer> customers = dao.fetchAllCustomer();
@@ -41,5 +50,6 @@ public class AdminViewCustomer extends HttpServlet {
 			req.setAttribute("list", customers);
 			req.getRequestDispatcher("ViewCustomer.jsp").include(req, resp);
 		}
+	}
 	}
 }

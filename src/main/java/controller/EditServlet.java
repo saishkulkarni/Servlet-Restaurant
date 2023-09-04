@@ -15,11 +15,17 @@ import dto.FoodItem;
 public class EditServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id=Integer.parseInt(req.getParameter("id"));
-		MyDao dao=new MyDao();
-		FoodItem item=dao.find(id);
-		
-		req.setAttribute("item", item);
-		req.getRequestDispatcher("Edit.jsp").forward(req, resp);
+		if (req.getSession().getAttribute("admin") == null) {
+			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			req.getRequestDispatcher("Login.html").include(req, resp);
+		} else {
+
+			int id = Integer.parseInt(req.getParameter("id"));
+			MyDao dao = new MyDao();
+			FoodItem item = dao.find(id);
+
+			req.setAttribute("item", item);
+			req.getRequestDispatcher("Edit.jsp").forward(req, resp);
+		}
 	}
 }

@@ -16,6 +16,13 @@ import dto.FoodItem;
 public class AdminViewMenu extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if(req.getSession().getAttribute("admin")==null)
+		{
+			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			req.getRequestDispatcher("Login.html").include(req, resp);
+		}
+		else {
+		
 		// Logic to fetch Data from Database
 		MyDao dao = new MyDao();
 		List<FoodItem> items = dao.fetchAllFoodItem();
@@ -41,6 +48,7 @@ public class AdminViewMenu extends HttpServlet {
 		else {
 		req.setAttribute("list", items);
 		req.getRequestDispatcher("ViewMenu.jsp").include(req, resp);
+		}
 		}
 	}
 }
