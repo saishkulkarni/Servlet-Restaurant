@@ -1,5 +1,8 @@
+<%@page import="org.apache.commons.codec.binary.Base64"%>
+<%@page import="dto.FoodItem"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	List<FoodItem> items = (List<FoodItem>) request.getAttribute("list");
+	%>
 
+	<table border="1">
+	
+	<tr>
+	<th>Picture</th>
+	<th>Name</th>
+	<th>Type</th>
+	<th>Price</th>
+	<th>Reduce</th>
+	<th>Quantity</th>
+	<th>Add</th>
+	</tr>
+	
+	<%for(FoodItem item:items) {%>
+		<tr>
+			<th>
+			<%String base64 = Base64.encodeBase64String(item.getPicture());%> 
+			<img height="100px" width="100px" alt="unknown"
+						src="data:image/jpeg;base64,<%=base64%>">
+			</th>
+			<th><%=item.getName()%></th>
+			<th><%=item.getType()%></th>
+			<th><%=item.getPrice()%>&#8377 </th>
+			<th><button>-</button></th>
+			<th>0</th>
+			<th><button>+</button></th>
+		</tr>
+		<%} %>
+		
+	</table>
 </body>
 </html>
