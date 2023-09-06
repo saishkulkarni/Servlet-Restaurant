@@ -21,7 +21,7 @@
 			<th>Picture</th>
 			<th>Type</th>
 			<th>Price</th>
-			<th>Quantity</th>
+			<th>Stock</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -36,7 +36,7 @@
 			</th>
 			<th><%=item.getType()%></th>
 			<th><%=item.getPrice()%></th>
-			<th><%=item.getQuantity()%></th>
+			<th><%=item.getStock()%></th>
 			<th><a href="edit?id=<%=item.getId()%>"><button>Edit</button></a></th>
 			<th><a href="delete?id=<%=item.getId()%>"><button>Delete</button></a></th>
 		</tr>

@@ -7,7 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import dto.Cart;
 import dto.Customer;
+import dto.CustomerFoodItem;
 import dto.FoodItem;
 
 public class MyDao {
@@ -66,6 +68,24 @@ public class MyDao {
 	public void update(FoodItem item) {
 		transaction.begin();
 		manager.merge(item);
+		transaction.commit();
+	}
+	
+	public void update(Customer customer) {
+		transaction.begin();
+		manager.merge(customer);
+		transaction.commit();
+	}
+	
+	public void update(Cart cart) {
+		transaction.begin();
+		manager.merge(cart);
+		transaction.commit();
+	}
+	
+	public void update(CustomerFoodItem foodItem) {
+		transaction.begin();
+		manager.merge(foodItem);
 		transaction.commit();
 	}
      

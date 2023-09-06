@@ -33,7 +33,7 @@ public class AddItem extends HttpServlet {
 			item.setName(name);
 			item.setPicture(picture);
 			item.setPrice(price);
-			item.setQuantity(quantity);
+			item.setStock(quantity);
 			item.setType(type);
 
 			MyDao dao = new MyDao();

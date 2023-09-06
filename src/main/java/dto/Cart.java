@@ -1,24 +1,22 @@
 package dto;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
 @Entity
 @Data
-public class FoodItem {
+public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String name;
-	private double price;
-	private int stock;
-	private String type;
-
-	@Lob
-	private byte[] picture;
+	int id;
+	
+	@OneToMany
+	List<CustomerFoodItem> foodItems;
 }

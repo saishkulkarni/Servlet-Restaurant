@@ -35,13 +35,16 @@
 			</th>
 			<th><%=item.getName()%></th>
 			<th><%=item.getType()%></th>
-			<th><%=item.getPrice()%>&#8377 </th>
-			<th><button>-</button></th>
+			<th><%=item.getPrice()%>&#8377</th>
+			<th><a href="removefromcart?id=<%=item.getId()%>"><button>-</button></a></th>
 			<th>0</th>
-			<th><button>+</button></th>
+			<th><a href="addtocart?id=<%=item.getId()%>"><button>+</button></a></th>
 		</tr>
 		<%} %>
 		
 	</table>
+	<br>
+	<a href=""><button>View Cart</button></a>
+	<a href="CustomerHome.html"><button>Back</button></a>
 </body>
 </html>

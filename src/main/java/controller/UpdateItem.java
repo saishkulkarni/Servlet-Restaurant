@@ -43,7 +43,7 @@ public class UpdateItem extends HttpServlet {
 				item.setPicture(picture);
 			}
 			item.setPrice(price);
-			item.setQuantity(quantity);
+			item.setStock(quantity);
 			item.setType(type);
 			dao.update(item);
 			resp.getWriter().print("<h1 style='color:green'>Data Updated Successfully</h1>");
