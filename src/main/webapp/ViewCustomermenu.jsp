@@ -1,3 +1,4 @@
+<%@page import="dto.CustomerFoodItem"%>
 <%@page import="org.apache.commons.codec.binary.Base64"%>
 <%@page import="dto.FoodItem"%>
 <%@page import="java.util.List"%>
@@ -12,6 +13,7 @@
 <body>
 	<%
 	List<FoodItem> items = (List<FoodItem>) request.getAttribute("list");
+	List<CustomerFoodItem> cartitems = (List<CustomerFoodItem>) request.getAttribute("cartitems");
 	%>
 
 	<table border="1">
@@ -37,7 +39,16 @@
 			<th><%=item.getType()%></th>
 			<th><%=item.getPrice()%>&#8377</th>
 			<th><a href="removefromcart?id=<%=item.getId()%>"><button>-</button></a></th>
-			<th>0</th>
+			<th>
+		<%if(cartitems==null){ %>0<%}else{
+			for(CustomerFoodItem foodItem:cartitems)
+			{
+				if(foodItem.getName().equals(item.getName())){%>
+					<%=foodItem.getQuantity()%>
+			<%}
+			}
+		} %>
+			</th>
 			<th><a href="addtocart?id=<%=item.getId()%>"><button>+</button></a></th>
 		</tr>
 		<%} %>

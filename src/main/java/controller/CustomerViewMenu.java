@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MyDao;
+import dto.Customer;
+import dto.CustomerFoodItem;
 import dto.FoodItem;
 
 @WebServlet("/viewcustomermenu")
@@ -43,6 +45,11 @@ public class CustomerViewMenu extends HttpServlet {
 				resp.getWriter().print("<h1 style='color:red'>No Items Found</h1>");
 				req.getRequestDispatcher("CustomerHome.html").include(req, resp);
 			} else {
+				Customer customer=(Customer) req.getSession().getAttribute("customer");
+				List<CustomerFoodItem> cartitems=null;
+				if(customer.getCart()!=null && customer.getCart().getFoodItems()!=null)
+				cartitems=customer.getCart().getFoodItems();
+				req.setAttribute("cartitems", cartitems);
 				req.setAttribute("list", items);
 				req.getRequestDispatcher("ViewCustomerMenu.jsp").include(req, resp);
 			}

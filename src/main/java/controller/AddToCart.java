@@ -26,6 +26,9 @@ public class AddToCart extends HttpServlet {
 			int id = Integer.parseInt(req.getParameter("id"));
 			MyDao dao = new MyDao();
 			FoodItem foodItem = dao.find(id);
+			//Checking if Stock is there
+			if(foodItem.getStock()>0)
+			{
 			Customer customer = (Customer) req.getSession().getAttribute("customer");
 
 			Cart cart = customer.getCart();
@@ -62,8 +65,20 @@ public class AddToCart extends HttpServlet {
 			dao.update(customer);
 			req.getSession().removeAttribute("customer");
 			req.getSession().setAttribute("customer", dao.findCustomer(customer.getId()));
+			
+			//Logic To reduce Stock
+			foodItem.setStock(foodItem.getStock()-1);
+			dao.update(foodItem);
+			
 			resp.getWriter().print("<h1>Added Success</h1>");
+			req.setAttribute("cartitems", cart.getFoodItems());
 			req.getRequestDispatcher("viewcustomermenu").include(req, resp);
+			}
+			else {
+				resp.getWriter().print("<h1 style='color:red'>Out Of Stock</h1>");
+				req.getRequestDispatcher("viewcustomermenu").include(req, resp);
+			}
+			
 		}
 	}
 }
