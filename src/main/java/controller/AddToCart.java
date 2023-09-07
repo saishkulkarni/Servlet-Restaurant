@@ -31,7 +31,10 @@ public class AddToCart extends HttpServlet {
 			Cart cart = customer.getCart();
 
 			if (cart == null)
+			{
 				cart = new Cart();
+				customer.setCart(cart);
+			}
 
 			if (cart.getFoodItems() == null) {
 				cart.setFoodItems(new ArrayList<CustomerFoodItem>());
@@ -42,7 +45,6 @@ public class AddToCart extends HttpServlet {
 				if (item.getName().equals(foodItem.getName())) {
 					item.setQuantity(item.getQuantity() + 1);
 					item.setPrice(item.getPrice() + foodItem.getPrice());
-					dao.update(item);
 					flag = false;
 					break;
 				}
@@ -55,12 +57,11 @@ public class AddToCart extends HttpServlet {
 				item.setPrice(foodItem.getPrice());
 				item.setQuantity(1);
 				item.setType(foodItem.getType());
-				dao.update(item);
 				cart.getFoodItems().add(item);
 			}
-			dao.update(cart);
 			dao.update(customer);
-
+			req.getSession().removeAttribute("customer");
+			req.getSession().setAttribute("customer", dao.findCustomer(customer.getId()));
 			resp.getWriter().print("<h1>Added Success</h1>");
 			req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 		}

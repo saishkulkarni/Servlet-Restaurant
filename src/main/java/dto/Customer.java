@@ -2,6 +2,7 @@ package dto;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Customer {
 	private int age;
 	private String country;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	Cart cart;
 
 }

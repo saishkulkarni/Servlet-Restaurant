@@ -2,6 +2,7 @@ package dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,6 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<CustomerFoodItem> foodItems;
 }
