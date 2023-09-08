@@ -23,6 +23,7 @@
 			<th>Name</th>
 			<th>Type</th>
 			<th>Price</th>
+			<th>Available</th>
 			<th>Reduce</th>
 			<th>Quantity</th>
 			<th>Add</th>
@@ -38,6 +39,7 @@
 			<th><%=item.getName()%></th>
 			<th><%=item.getType()%></th>
 			<th><%=item.getPrice()%>&#8377</th>
+			<th><%=item.getStock()%></th>
 			<th><a href="removefromcart?id=<%=item.getId()%>"><button>-</button></a></th>
 			<th>
 				<%if(cartitems==null){ %>0<%}else{
