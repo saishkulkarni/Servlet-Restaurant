@@ -24,7 +24,7 @@
 	<input type="radio" name="type" value="non-veg" checked="checked" >Non-Veg
 	<%} %>
 	<br>
-	Quantity:<input type="text" name="quantity" value="<%=item.getQuantity()%>"><br>
+	Quantity:<input type="text" name="quantity" value="<%=item.getStock()%>"><br>
 	Picture:
 	<%String base64 = Base64.encodeBase64String(item.getPicture());%> 
 			<img height="50px" width="50px" alt="unknown"

@@ -17,42 +17,48 @@
 	%>
 
 	<table border="1">
-	
-	<tr>
-	<th>Picture</th>
-	<th>Name</th>
-	<th>Type</th>
-	<th>Price</th>
-	<th>Reduce</th>
-	<th>Quantity</th>
-	<th>Add</th>
-	</tr>
-	
-	<%for(FoodItem item:items) {%>
+
+		<tr>
+			<th>Picture</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Price</th>
+			<th>Reduce</th>
+			<th>Quantity</th>
+			<th>Add</th>
+		</tr>
+
+		<%for(FoodItem item:items) {%>
 		<tr>
 			<th>
-			<%String base64 = Base64.encodeBase64String(item.getPicture());%> 
-			<img height="100px" width="100px" alt="unknown"
-						src="data:image/jpeg;base64,<%=base64%>">
+				<%String base64 = Base64.encodeBase64String(item.getPicture());%> <img
+				height="100px" width="100px" alt="unknown"
+				src="data:image/jpeg;base64,<%=base64%>">
 			</th>
 			<th><%=item.getName()%></th>
 			<th><%=item.getType()%></th>
 			<th><%=item.getPrice()%>&#8377</th>
 			<th><a href="removefromcart?id=<%=item.getId()%>"><button>-</button></a></th>
 			<th>
-		<%if(cartitems==null){ %>0<%}else{
+				<%if(cartitems==null){ %>0<%}else{
+			boolean flag=true;
 			for(CustomerFoodItem foodItem:cartitems)
 			{
-				if(foodItem.getName().equals(item.getName())){%>
-					<%=foodItem.getQuantity()%>
-			<%}
+				if(foodItem.getName().equals(item.getName())){%> <%=foodItem.getQuantity()%>
+				<%flag=false;
 			}
-		} %>
+			}
+				if(flag){
+					%>
+					<%=0 %>
+					<% 
+			
+				}} %>
 			</th>
 			<th><a href="addtocart?id=<%=item.getId()%>"><button>+</button></a></th>
 		</tr>
 		<%} %>
-		
+
 	</table>
 	<br>
 	<a href=""><button>View Cart</button></a>
