@@ -51,5 +51,8 @@
 	<th><%=sum %>&#8377</th>
 	</tr>
 	</table>
+	<br>
+	<a href="viewcustomermenu"><button>Back</button></a>
+	<a href="placeorder"><button>Place Order</button></a>
 </body>
 </html>
