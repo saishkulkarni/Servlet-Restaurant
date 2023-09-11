@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Menu</title>
 </head>
 <body>
 	<%
@@ -63,7 +63,7 @@
 
 	</table>
 	<br>
-	<a href=""><button>View Cart</button></a>
+	<a href="viewcart"><button>View Cart</button></a>
 	<a href="CustomerHome.html"><button>Back</button></a>
 </body>
 </html>
