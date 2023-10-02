@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Add Item</title>
+    <meta charset="UTF-8">
+    <title>Add Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0073e6;
+            margin-top: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="reset"] {
+            background-color: #ccc;
+        }
+
+        button:hover {
+            background-color: #005bb7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a button {
+            background-color: #ccc;
+        }
+    </style>
 </head>
+
 <body>
-<h1>Enter Details</h1>
-<form action="additem" method="post" enctype="multipart/form-data">
-	Name:<input type="text" name="name"><br>
-	Price:<input type="text" name="price"><br>
-	Food Type: <input type="radio" name="type" value="veg">Veg<br>
-	<input type="radio" name="type" value="non-veg">Non-Veg
-	<br>
-	Quantity:<input type="text" name="quantity"><br>
-	Picture:<input type="file" name="pic"><br>
-	<button>Add</button>
-	<button type="reset">Cancel</button>
-</form>
-<br><a href="AdminHome.html"><button>Back</button></a>
+    <h1>Enter Details</h1>
+    <form action="additem" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" name="name"><br>
+
+        <label for="price">Price:</label>
+        <input type="text" name="price"><br>
+
+        <label>Food Type:</label>
+        <input type="radio" name="type" value="veg">Veg
+        <input type="radio" name="type" value="non-veg">Non-Veg<br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" name="quantity"><br>
+
+        <label for="pic">Picture:</label>
+        <input type="file" name="pic"><br>
+
+        <button>Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+    <br>
+    <a href="AdminHome.html"><button>Back</button></a>
 </body>
+
 </html>

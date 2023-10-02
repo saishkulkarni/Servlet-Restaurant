@@ -23,23 +23,33 @@ public class CustomerViewCart extends HttpServlet {
 		} else {
 			Customer customer = (Customer) req.getSession().getAttribute("customer");
 			Cart cart = customer.getCart();
-			if(cart==null)
-			{
+			if (cart == null) {
 				resp.getWriter().print("<h1 style='color:red'>No Items in Cart</h1>");
 				req.getRequestDispatcher("viewcustomermenu").include(req, resp);
-			}
-			else {
-				List<CustomerFoodItem> list=cart.getFoodItems();
-				if(list==null)
-				{
+			} else {
+				List<CustomerFoodItem> list = cart.getFoodItems();
+				if (list == null) {
 					resp.getWriter().print("<h1 style='color:red'>No Items in Cart</h1>");
 					req.getRequestDispatcher("viewcustomermenu").include(req, resp);
-				}
-				else {
+				} else {
+					boolean flag = false;
+					for (CustomerFoodItem foodItem : list) {
+						if (foodItem.getQuantity() > 0) {
+							flag = true;
+							break;
+						}
+					}
+					if(flag)
+					{
 					req.setAttribute("list", list);
 					req.getRequestDispatcher("ViewCart.jsp").forward(req, resp);
+					}
+					else {
+						resp.getWriter().print("<h1 style='color:red'>No Items in Cart</h1>");
+						req.getRequestDispatcher("viewcustomermenu").include(req, resp);
+					}
 				}
-				}
+			}
 		}
 	}
 }

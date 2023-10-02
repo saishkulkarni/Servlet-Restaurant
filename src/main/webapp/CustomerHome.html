@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>This is Customer Home Page</h1>
-<a href="viewcustomermenu"><button>View Menu</button></a>
-<a href=""><button>View All Orders</button></a>
-<a href="logout"><button>Logout</button></a>
 
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0073e6;
+            margin-top: 30px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005bb7;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>This is Customer Home Page</h1>
+    <a href="viewcustomermenu"><button>View Menu</button></a>
+    <a href="viewcustomerorders"><button>View All Orders</button></a>
+    <a href="logout"><button>Logout</button></a>
 </body>
+
 </html>

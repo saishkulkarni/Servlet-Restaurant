@@ -6,59 +6,116 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Signup</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			text-align: center;
+		}
+
+		h1 {
+			color: #0073e6;
+			margin-top: 30px;
+		}
+
+		form {
+			background-color: #fff;
+			width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		legend {
+			font-weight: bold;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		th {
+			text-align: left;
+			padding-bottom: 10px;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="tel"],
+		input[type="email"],
+		input[type="date"],
+		select,
+		input[type="file"] {
+			width: 90%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+
+		button {
+			background-color: #0073e6;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			margin-top: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button[type="reset"] {
+			background-color: #ccc;
+		}
+
+		button:hover {
+			background-color: #005bb7;
+		}
+
+		a {
+			text-decoration: none;
+			color: #0073e6;
+		}
+
+		a button {
+			background-color: #ccc;
+		}
+	</style>
 </head>
 
 <body>
 	<h1>Signup Page</h1>
 	<form action="signup" method="post" enctype="multipart/form-data">
 		<fieldset>
-			<legend>Enter Details Here,</legend>
+			<legend>Enter Details Here</legend>
 			<table>
 				<tr>
-					<th>
-						FullName:
-					</th>
-					<td>
-						<input type="text" name="fullname">
-					</td>
+					<th>FullName:</th>
+					<td><input type="text" name="fullname"></td>
 				</tr>
 				<tr>
-					<th>
-						Password:
-					</th>
-					<td>
-						<input type="password" name="password" required>
-					</td>
-				</tr>
-
-				<tr>
-					<th>
-						Mobile:
-					</th>
-					<td>
-						<input type="tel" pattern="[0-9]{10}" name="mobile" required>
-					</td>
+					<th>Password:</th>
+					<td><input type="password" name="password" required></td>
 				</tr>
 				<tr>
-					<th>
-						Email:
-					</th>
-					<td>
-						<input type="email" name="email">
-					</td>
+					<th>Mobile:</th>
+					<td><input type="tel" pattern="[0-9]{10}" name="mobile" required></td>
 				</tr>
 				<tr>
-					<th>
-						Date of Birth:
-					</th>
-					<td>
-						<input type="date" name="dob" required>
-					</td>
+					<th>Email:</th>
+					<td><input type="email" name="email"></td>
 				</tr>
 				<tr>
-					<th>
-						Gender:
-					</th>
+					<th>Date of Birth:</th>
+					<td><input type="date" name="dob" required></td>
+				</tr>
+				<tr>
+					<th>Gender:</th>
 					<td>
 						Male <input type="radio" value="male" name="gender">
 						Female <input type="radio" value="female" name="gender">
@@ -66,18 +123,11 @@
 					</td>
 				</tr>
 				<tr>
-					<th>
-						Picture:
-					</th>
-					<td>
-						<input type="file" name="picture" required>
-					</td>
+					<th>Picture:</th>
+					<td><input type="file" name="picture" required></td>
 				</tr>
-
 				<tr>
-					<th>
-						Country:
-					</th>
+					<th>Country:</th>
 					<td>
 						<select name="country">
 							<option>India</option>
@@ -89,17 +139,12 @@
 					</td>
 				</tr>
 			</table>
-			<button>
-				Signup
-			</button>
-			<button type="reset">
-				Reset
-			</button>
+			<button>Signup</button>
+			<button type="reset">Reset</button>
 			<br><br>
-			<a href="Login.html">Already have Account? Click here to Login</a>
+			<a href="Login.html">Already have an Account? Click here to Login</a>
 		</fieldset>
 	</form>
-
 	<br>
 	<a href="Home.html"><button>Home</button></a>
 </body>

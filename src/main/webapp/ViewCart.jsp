@@ -6,16 +6,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Cart</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	text-align: center;
+}
+
+h1 {
+	color: #0073e6;
+	margin-top: 30px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+}
+
+th {
+	background-color: #0073e6;
+	color: #fff;
+}
+
+img {
+	height: 100px;
+	width: 100px;
+}
+
+button {
+	background-color: #0073e6;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #005bb7;
+}
+
+a {
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
+	<h1>Cart</h1>
 	<%
 	List<CustomerFoodItem> list = (List<CustomerFoodItem>) request.getAttribute("list");
 	%>
 
 	<table border="1">
-
 		<tr>
 			<th>Picture</th>
 			<th>Name</th>
@@ -24,32 +77,31 @@
 			<th>Quantity</th>
 			<th>Price</th>
 		</tr>
-<%double sum=0; %>
 		<%
+		double sum = 0;
 		for (CustomerFoodItem item : list) {
-			sum=sum+item.getPrice();
+			sum = sum + item.getPrice();
 		%>
 		<tr>
-			<th>
+			<td>
 				<%
 				String base64 = Base64.encodeBase64String(item.getPicture());
-				%> <img
-				height="100px" width="100px" alt="unknown"
+				%> <img alt="unknown"
 				src="data:image/jpeg;base64,<%=base64%>">
-			</th>
-			<th><%=item.getName()%></th>
-			<th><%=item.getType()%></th>
-			<th><%=item.getPrice()/item.getQuantity()%>&#8377</th>
-			<th><%=item.getQuantity()%></th>
-			<th><%=item.getPrice()%>&#8377</th>
+			</td>
+			<td><%=item.getName()%></td>
+			<td><%=item.getType()%></td>
+			<td><%=item.getPrice() / item.getQuantity()%>₹</td>
+			<td><%=item.getQuantity()%></td>
+			<td><%=item.getPrice()%>&#8377</td>
 		</tr>
 		<%
 		}
 		%>
-	<tr>
-	<th colspan="5">Total Price is :</th>
-	<th><%=sum %>&#8377</th>
-	</tr>
+		<tr>
+			<td colspan="5">Total Price is :</td	>
+			<th><%=sum%>&#8377</th>
+		</tr>
 	</table>
 	<br>
 	<a href="viewcustomermenu"><button>Back</button></a>

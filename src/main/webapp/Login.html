@@ -2,43 +2,102 @@
 <html>
 
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Welcome to My Restaurant</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			text-align: center;
+		}
+
+		h1 {
+			color: #0073e6;
+			margin-top: 50px;
+		}
+
+		#mainc {
+			background-color: #fff;
+			width: 300px;
+			margin: 0 auto;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		label {
+			display: block;
+			text-align: left;
+			margin-bottom: 5px;
+		}
+
+		input[type="email"],
+		input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		button {
+			background-color: #0073e6;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			margin-top: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			margin-bottom: 20px;
+		}
+
+		button[type="reset"] {
+			background-color: #ccc;
+			margin-bottom: 20px;
+		}
+
+		button:hover {
+			background-color: #005bb7;
+		}
+
+		h4 {
+			margin-top: 10px;
+		}
+
+		a {
+			text-decoration: none;
+			color: #0073e6;
+		}
+
+		h5 {
+			margin-top: 10px;
+		}
+	</style>
 </head>
 
 <body>
 	<h1>
-		<marquee behavior="" direction="" scrollamount="30">WELCOME TO MY RESTAURENT</marquee>
+		<marquee behavior="scroll" direction="left" scrollamount="30">WELCOME TO MY RESTAURANT</marquee>
 	</h1>
 	<div id="mainc">
-
 		<form action="login" method="post">
 			<table>
-
-
 				<tr>
 					<td><label for="email">Email</label></td>
-					<td><input type="email" name="email" id="log-em" placeholder="enter your email" required></td>
-
+					<td><input type="email" name="email" id="log-em" placeholder="Enter your email" required></td>
 				</tr>
-
 				<tr>
 					<td><label for="pass">Password</label></td>
-					<td><input type="password" name="pass" id="log-pass" placeholder="enter password" required></td>
+					<td><input type="password" name="pass" id="log-pass" placeholder="Enter password" required></td>
 				</tr>
-
-
 				<tr>
 					<td><button>Login</button></td>
 					<td><button type="reset">Cancel</button></td>
 				</tr>
-
 			</table>
-			<form>
-				<h4><a href="./forgotpass.html">Forgot Password</a></h4>
-				<h5>New? click here for <a href="Signup.html">Signup</a></h5>
-
-
+		</form>
+		<h5>New? Click here for <a href="Signup.html">Signup</a></h5>
 	</div>
 </body>
 

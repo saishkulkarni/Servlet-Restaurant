@@ -1,3 +1,4 @@
+<%@page import="dto.CustomerFoodItem"%>
 <%@page import="org.apache.commons.codec.binary.Base64"%>
 <%@page import="dto.FoodItem"%>
 <%@page import="java.util.List"%>
@@ -13,8 +14,6 @@ body {
 	font-family: Arial, sans-serif;
 	background-color: #f0f0f0;
 	text-align: center;
-	margin: 0;
-	padding: 0;
 }
 
 h1 {
@@ -49,7 +48,7 @@ button {
 	color: #fff;
 	border: none;
 	padding: 10px 20px;
-	margin: 5px;
+	margin-top: 10px;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
@@ -62,58 +61,67 @@ button:hover {
 a {
 	text-decoration: none;
 }
-
-.edit-button {
-	background-color: #00cc00;
-}
-
-.delete-button {
-	background-color: #ff0000;
-}
 </style>
 </head>
 <body>
 	<h1>Menu</h1>
 	<%
 	List<FoodItem> items = (List<FoodItem>) request.getAttribute("list");
+	List<CustomerFoodItem> cartitems = (List<CustomerFoodItem>) request.getAttribute("cartitems");
 	%>
 
 	<table border="1">
 		<tr>
-			<th>Id</th>
-			<th>Name</th>
 			<th>Picture</th>
+			<th>Name</th>
 			<th>Type</th>
 			<th>Price</th>
-			<th>Stock</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th>Available</th>
+			<th>Reduce</th>
+			<th>Quantity</th>
+			<th>Add</th>
 		</tr>
 		<%
 		for (FoodItem item : items) {
 		%>
 		<tr>
-			<td><%=item.getId()%></td>
-			<td><%=item.getName()%></td>
 			<td>
 				<%
 				String base64 = Base64.encodeBase64String(item.getPicture());
-				%> <img height="100px" width="100px" alt="unknown"
+				%> <img alt="unknown"
 				src="data:image/jpeg;base64,<%=base64%>">
 			</td>
+			<td><%=item.getName()%></td>
 			<td><%=item.getType()%></td>
-			<td><%=item.getPrice()%></td>
+			<td><%=item.getPrice()%>&#8377</td>
 			<td><%=item.getStock()%></td>
-			<td><a href="edit?id=<%=item.getId()%>"><button
-						class="edit-button">Edit</button></a></td>
-			<td><a href="delete?id=<%=item.getId()%>"><button
-						class="delete-button">Delete</button></a></td>
+			<td><a href="removefromcart?id=<%=item.getId()%>"><button>-</button></a></td>
+			<td>
+				<%
+				if (cartitems == null) {
+				%>0 <%
+				} else {
+				boolean flag = true;
+				for (CustomerFoodItem foodItem : cartitems) {
+					if (foodItem.getName().equals(item.getName())) {
+				%> <%=foodItem.getQuantity()%> <%
+ flag = false;
+ }
+ }
+ if (flag) {
+ %> <%=0%> <%
+ }
+ }
+ %>
+			</td>
+			<td><a href="addtocart?id=<%=item.getId()%>"><button>+</button></a></td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
 	<br>
-	<a href="AdminHome.html"><button>Back</button></a>
+	<a href="viewcart"><button>View Cart</button></a>
+	<a href="CustomerHome.html"><button>Back</button></a>
 </body>
 </html>
