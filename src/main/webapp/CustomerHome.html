@@ -2,46 +2,72 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Customer Home Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
+	<meta charset="UTF-8">
+	<title>Customer Home Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			text-align: center;
+		}
 
-        h1 {
-            color: #0073e6;
-            margin-top: 30px;
-        }
+		h1 {
+			color: #0073e6;
+			margin-top: 30px;
+		}
 
-        a {
-            text-decoration: none;
-        }
+		h2 {
+			color: red;
+			font-size: 25px;
+		}
 
-        button {
-            background-color: #0073e6;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+		h3 {
+			color: green;
+			font-size: 25px;
+		}
 
-        button:hover {
-            background-color: #005bb7;
-        }
-    </style>
+		a {
+			text-decoration: none;
+		}
+
+		button {
+			background-color: #0073e6;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			margin: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: #005bb7;
+		}
+	</style>
 </head>
 
 <body>
-    <h1>This is Customer Home Page</h1>
-    <a href="viewcustomermenu"><button>View Menu</button></a>
-    <a href="viewcustomerorders"><button>View All Orders</button></a>
-    <a href="logout"><button>Logout</button></a>
+	<h1>Customer Home</h1>
+	<a href="viewcustomermenu"><button>View Menu</button></a>
+	<a href="viewcustomerorders"><button>View All Orders</button></a>
+	<a href="logout"><button>Logout</button></a>
+
+	<script>
+		setTimeout(function () {
+			// Select h2 and h3 elements and hide them
+			var h2Element = document.querySelector('h2');
+			var h3Element = document.querySelector('h3');
+
+			if (h2Element) {
+				h2Element.style.display = 'none';
+			}
+
+			if (h3Element) {
+				h3Element.style.display = 'none';
+			}
+		}, 1000); // 1000 milliseconds = 1 second
+	</script>
 </body>
 
 </html>

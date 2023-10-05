@@ -20,6 +20,16 @@ h1 {
 	margin-top: 30px;
 }
 
+h2 {
+	color: red;
+	font-size: 25px;
+}
+
+h3 {
+	color: green;
+	font-size: 25px;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -86,8 +96,7 @@ a {
 			<td>
 				<%
 				String base64 = Base64.encodeBase64String(item.getPicture());
-				%> <img alt="unknown"
-				src="data:image/jpeg;base64,<%=base64%>">
+				%> <img alt="unknown" src="data:image/jpeg;base64,<%=base64%>">
 			</td>
 			<td><%=item.getName()%></td>
 			<td><%=item.getType()%></td>
@@ -99,12 +108,27 @@ a {
 		}
 		%>
 		<tr>
-			<td colspan="5">Total Price is :</td	>
+			<td colspan="5">Total Price is :</td>
 			<th><%=sum%>&#8377</th>
 		</tr>
 	</table>
 	<br>
 	<a href="viewcustomermenu"><button>Back</button></a>
 	<a href="placeorder"><button>Place Order</button></a>
+	<script>
+        setTimeout(function () {
+            // Select h2 and h3 elements and hide them
+            var h2Element = document.querySelector('h2');
+            var h3Element = document.querySelector('h3');
+            
+            if (h2Element) {
+                h2Element.style.display = 'none';
+            }
+            
+            if (h3Element) {
+                h3Element.style.display = 'none';
+            }
+        }, 1000); // 1000 milliseconds = 1 second
+    </script>
 </body>
 </html>

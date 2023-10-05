@@ -18,7 +18,7 @@ public class AddItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("admin") == null) {
-			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			resp.getWriter().print("<html><h2>Invalid Session</h2>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
 			String name = req.getParameter("name");
@@ -39,7 +39,7 @@ public class AddItem extends HttpServlet {
 			MyDao dao = new MyDao();
 			dao.save(item);
 
-			resp.getWriter().print("<h1 style='color:green'>Item Added Successfully</h1>");
+			resp.getWriter().print("<html><h3>Item Added Successfully</h3>");
 			req.getRequestDispatcher("AdminHome.html").include(req, resp);
 
 		}

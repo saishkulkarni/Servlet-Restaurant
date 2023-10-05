@@ -22,8 +22,19 @@ h1 {
 	margin-top: 30px;
 }
 
+h2 {
+	color: red;
+	font-size: 25px;
+}
+
+h3 {
+	color: green;
+	font-size: 25px;
+}
+
 table {
-	width: 100%;
+	margin-left:100px;
+	width: 90%;
 	border-collapse: collapse;
 	margin-top: 20px;
 }
@@ -115,5 +126,21 @@ a {
 	</table>
 	<br>
 	<a href="AdminHome.html"><button>Back</button></a>
+	
+	<script>
+        setTimeout(function () {
+            // Select h2 and h3 elements and hide them
+            var h2Element = document.querySelector('h2');
+            var h3Element = document.querySelector('h3');
+            
+            if (h2Element) {
+                h2Element.style.display = 'none';
+            }
+            
+            if (h3Element) {
+                h3Element.style.display = 'none';
+            }
+        }, 1000); // 1000 milliseconds = 1 second
+    </script>
 </body>
 </html>

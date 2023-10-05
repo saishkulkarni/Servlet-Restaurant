@@ -21,8 +21,19 @@ h1 {
 	margin-top: 30px;
 }
 
+h2 {
+	color: red;
+	font-size: 25px;
+}
+
+h3 {
+	color: green;
+	font-size: 25px;
+}
+
 table {
-	width: 100%;
+	width: 90%;
+	margin-left:100px;
 	border-collapse: collapse;
 	margin-top: 20px;
 }
@@ -44,7 +55,7 @@ img {
 }
 
 button {
-	background-color: #0073e6;
+	background-color: red;
 	color: #fff;
 	border: none;
 	padding: 10px 20px;
@@ -64,7 +75,7 @@ a {
 </style>
 </head>
 <body>
-	<h1>Menu</h1>
+	<h1>Customers</h1>
 	<%
 	List<Customer> customers = (List<Customer>) request.getAttribute("list");
 	%>
@@ -89,14 +100,14 @@ a {
 			<td>
 				<%
 				String base64 = Base64.encodeBase64String(customer.getPicture());
-				%> <img alt="unknown"
-				src="data:image/jpeg;base64,<%=base64%>">
+				%> <img alt="unknown" src="data:image/jpeg;base64,<%=base64%>">
 			</td>
 			<td><%=customer.getEmail()%></td>
 			<td><%=customer.getMobile()%></td>
 			<td><%=customer.getGender()%></td>
 			<td><%=customer.getDob()%></td>
-			<td><a class="delete-button" href="deletecustomer?id=<%=customer.getId()%>"><button>Delete</button></a></td>
+			<td><a class="delete-button"
+				href="deletecustomer?id=<%=customer.getId()%>"><button>Delete</button></a></td>
 		</tr>
 		<%
 		}
@@ -104,5 +115,20 @@ a {
 	</table>
 	<br>
 	<a href="AdminHome.html"><button>Back</button></a>
+	<script>
+        setTimeout(function () {
+            // Select h2 and h3 elements and hide them
+            var h2Element = document.querySelector('h2');
+            var h3Element = document.querySelector('h3');
+            
+            if (h2Element) {
+                h2Element.style.display = 'none';
+            }
+            
+            if (h3Element) {
+                h3Element.style.display = 'none';
+            }
+        }, 1000); // 1000 milliseconds = 1 second
+    </script>
 </body>
 </html>

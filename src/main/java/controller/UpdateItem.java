@@ -20,7 +20,7 @@ public class UpdateItem extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (req.getSession().getAttribute("admin") == null) {
-			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			resp.getWriter().print("<html><h2>Invalid Session</h2>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
 			int id = Integer.parseInt(req.getParameter("id"));
@@ -46,7 +46,7 @@ public class UpdateItem extends HttpServlet {
 			item.setStock(quantity);
 			item.setType(type);
 			dao.update(item);
-			resp.getWriter().print("<h1 style='color:green'>Data Updated Successfully</h1>");
+			resp.getWriter().print("<html><h3>Data Updated Successfully</h3>");
 			req.getRequestDispatcher("viewmenu").include(req, resp);
 
 		}

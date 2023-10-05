@@ -17,13 +17,13 @@ public class ViewCustomerOrders extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("customer") == null) {
-			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			resp.getWriter().print("<html><h2>Invalid Session</h2>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
 			Customer customer = (Customer) req.getSession().getAttribute("customer");
 			List<CustomerOrder> list = customer.getCustomerOrders();
 			if (list == null || list.isEmpty()) {
-				resp.getWriter().print("<h1 style='color:red'>No Orders Found</h1>");
+				resp.getWriter().print("<html><h2>No Orders Found</h2>");
 				req.getRequestDispatcher("CustomerHome.html").include(req, resp);
 			} else {
 				req.setAttribute("list", list);

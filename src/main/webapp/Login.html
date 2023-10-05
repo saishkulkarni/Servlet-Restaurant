@@ -15,6 +15,16 @@
 			color: #0073e6;
 			margin-top: 50px;
 		}
+		
+		h2{
+			color: red;
+			font-size: 25px;
+		}
+        
+        h3{
+			color: green;
+			font-size: 25px;
+		}
 
 		#mainc {
 			background-color: #fff;
@@ -47,6 +57,7 @@
 			padding: 10px 20px;
 			margin-top: 10px;
 			border-radius: 5px;
+			margin-left: 20px;
 			cursor: pointer;
 			transition: background-color 0.3s;
 			margin-bottom: 20px;
@@ -78,17 +89,17 @@
 
 <body>
 	<h1>
-		<marquee behavior="scroll" direction="left" scrollamount="30">WELCOME TO MY RESTAURANT</marquee>
+		Login Here
 	</h1>
 	<div id="mainc">
 		<form action="login" method="post">
 			<table>
 				<tr>
-					<td><label for="email">Email</label></td>
+					<td><label for="email">Email:</label></td>
 					<td><input type="email" name="email" id="log-em" placeholder="Enter your email" required></td>
 				</tr>
 				<tr>
-					<td><label for="pass">Password</label></td>
+					<td><label for="pass">Password:</label></td>
 					<td><input type="password" name="pass" id="log-pass" placeholder="Enter password" required></td>
 				</tr>
 				<tr>
@@ -98,7 +109,23 @@
 			</table>
 		</form>
 		<h5>New? Click here for <a href="Signup.html">Signup</a></h5>
-	</div>
+	</div><br>
+	<a href="Home.html"><button>Back</button></a>
+	<script>
+        setTimeout(function () {
+            // Select h2 and h3 elements and hide them
+            var h2Element = document.querySelector('h2');
+            var h3Element = document.querySelector('h3');
+            
+            if (h2Element) {
+                h2Element.style.display = 'none';
+            }
+            
+            if (h3Element) {
+                h3Element.style.display = 'none';
+            }
+        }, 1000); // 1000 milliseconds = 1 second
+    </script>
 </body>
 
 </html>

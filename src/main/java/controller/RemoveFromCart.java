@@ -20,7 +20,7 @@ public class RemoveFromCart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("customer") == null) {
-			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			resp.getWriter().print("<html><h2>Invalid Session</h2>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
 			int id = Integer.parseInt(req.getParameter("id"));
@@ -30,14 +30,14 @@ public class RemoveFromCart extends HttpServlet {
 			Cart cart = customer.getCart();
 			if(cart==null)
 			{
-				resp.getWriter().print("<h1 style='color:red'>No Item in Cart</h1>");
+				resp.getWriter().print("<html><h2>No Item in Cart</h2>");
 				req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 			}
 			else {
 				List<CustomerFoodItem> list=cart.getFoodItems();
 				if(list==null)
 				{
-					resp.getWriter().print("<h1 style='color:red'>No Item in Cart</h1>");
+					resp.getWriter().print("<html><h2>No Item in Cart</h2>");
 					req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 				}
 				else {
@@ -52,7 +52,7 @@ public class RemoveFromCart extends HttpServlet {
 					}
 					if(foodItem2==null)
 					{
-						resp.getWriter().print("<h1 style='color:red'>No Item in Cart</h1>");
+						resp.getWriter().print("<html><h2>No Item in Cart</h2>");
 						req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 					}
 					else {
@@ -73,7 +73,7 @@ public class RemoveFromCart extends HttpServlet {
 						req.getSession().removeAttribute("customer");
 						req.getSession().setAttribute("customer", dao.findCustomer(customer.getId()));
 						
-						resp.getWriter().print("<h1 style='color:green'>Item Removed From Cart Success</h1>");
+						resp.getWriter().print("<html><h3>Item Removed From Cart Success</h3>");
 						req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 					}
 				}

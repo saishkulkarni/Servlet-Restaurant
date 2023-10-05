@@ -22,14 +22,14 @@ public class PlaceOrder extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("customer") == null) {
-			resp.getWriter().print("<h1 style='color:red'>Invalid Session</h1>");
+			resp.getWriter().print("<html><h2>Invalid Session</h2>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
 			MyDao dao = new MyDao();
 			Customer customer = (Customer) req.getSession().getAttribute("customer");
 			Cart cart = customer.getCart();
 			if (cart == null) {
-				resp.getWriter().print("<h1 style='color:red'>No Item in Cart</h1>");
+				resp.getWriter().print("<html><h2>No Item in Cart</h2>");
 				req.getRequestDispatcher("viewcustomermenu").include(req, resp);
 			} else {
 				CustomerOrder order = new CustomerOrder();
@@ -55,7 +55,7 @@ public class PlaceOrder extends HttpServlet {
 				req.getSession().removeAttribute("customer");
 				req.getSession().setAttribute("customer", dao.findCustomer(customer.getId()));
 
-				resp.getWriter().print("<h1 style='color:green'>Order Placed Success</h1>");
+				resp.getWriter().print("<html><h3>Order Placed Success</h3>");
 				req.getRequestDispatcher("CustomerHome.html").include(req, resp);
 
 			}

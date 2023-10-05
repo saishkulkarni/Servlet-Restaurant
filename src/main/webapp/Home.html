@@ -15,6 +15,16 @@
 			color: #0073e6;
 		}
 
+		h2 {
+			color: red;
+			font-size: 25px;
+		}
+
+		h3 {
+			color: green;
+			font-size: 25px;
+		}
+
 		a {
 			text-decoration: none;
 		}
@@ -37,10 +47,25 @@
 </head>
 
 <body>
-	<h1>Welcome to MyRestaurant</h1>
-	<a href="Home.html"><button>Home</button></a>
+	<h1><a href="Home.html">Welcome to MyRestaurant</a></h1>
 	<a href="Login.html"><button>Login</button></a>
 	<a href="Signup.html"><button>Signup</button></a>
+
+	<script>
+		setTimeout(function () {
+			// Select h2 and h3 elements and hide them
+			var h2Element = document.querySelector('h2');
+			var h3Element = document.querySelector('h3');
+
+			if (h2Element) {
+				h2Element.style.display = 'none';
+			}
+
+			if (h3Element) {
+				h3Element.style.display = 'none';
+			}
+		}, 1000); // 1000 milliseconds = 1 second
+	</script>
 </body>
 
 </html>
